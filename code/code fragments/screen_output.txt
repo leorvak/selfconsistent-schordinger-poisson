@@ -1,0 +1,51 @@
+1 iteration
+solving Schrodinger's equation...
+Finding n_k...
+Finding the electron density function n(x)
+solving Poisson's equation...
+Solving linear variational problem.
+
+
+convergence
+v_error: 1.01285048897
+n_error: 8.07783054927e+14
+
+2 iteration
+solving Schrodinger's equation...
+Finding n_k...
+Finding the electron density function n(x)
+solving Poisson's equation...
+Solving linear variational problem.
+
+
+convergence
+v_error: 3.0069813961e-05
+n_error: 0.000757017188643
+
+3 iteration
+solving Schrodinger's equation...
+Finding n_k...
+Finding the electron density function n(x)
+solving Poisson's equation...
+Solving linear variational problem.
+
+
+convergence
+v_error: 1.06140522878e-05
+n_error: 0.00016060405638
+
+4 iteration
+solving Schrodinger's equation...
+Finding n_k...
+Finding the electron density function n(x)
+solving Poisson's equation...
+Solving linear variational problem.
+
+
+convergence
+v_error: 7.08611449997e-06
+n_error: 5.61534773582e-05
+
+Convergence occured at k: 4
+average electron density = 8.06819211634e+14
+time elapsed: 170.97 seconds

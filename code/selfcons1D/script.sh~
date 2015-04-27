@@ -1,0 +1,5 @@
+max=40000
+for ((i=10000; i<=$max; i+=5000 )) ; 
+do
+    python main.py $i
+done

@@ -1,0 +1,282 @@
+%% ut-thesis.tex -- document template for graduate theses at UofT
+%%
+%% Copyright (c) 1998-2012 Francois Pitt <fpitt@cs.utoronto.ca>
+%% last updated at 09:43 (EDT) on Fri  1 Jun 2012
+%%
+%% This work may be distributed and/or modified under the conditions of
+%% the LaTeX Project Public License, either version 1.3c of this license
+%% or (at your option) any later version.
+%% The latest version of this license is in
+%%     http://www.latex-project.org/lppl.txt
+%% and version 1.3c or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status "maintained".
+%%
+%% The Current Maintainer of this work is
+%% Francois Pitt <fpitt@cs.utoronto.ca>.
+%%
+%% This work consists of the files listed in the accompanying README.
+
+%% SUMMARY OF FEATURES:
+%%
+%% All environments, commands, and options provided by the `ut-thesis'
+%% class will be described below, at the point where they should appear
+%% in the document.  See the file `ut-thesis.cls' for more details.
+%%
+%% To explicitly set the pagestyle of any blank page inserted with
+%% \cleardoublepage, use one of \clearemptydoublepage,
+%% \clearplaindoublepage, \clearthesisdoublepage, or
+%% \clearstandarddoublepage (to use the style currently in effect).
+%%
+%% For single-spaced quotes or quotations, use the `longquote' and
+%% `longquotation' environments.
+
+
+%%%%%%%%%%%%         PREAMBLE         %%%%%%%%%%%%
+
+%%  - Default settings format a final copy (single-sided, normal
+%%    margins, one-and-a-half-spaced with single-spaced notes).
+%%  - For a rough copy (double-sided, normal margins, double-spaced,
+%%    with the word "DRAFT" printed at each corner of every page), use
+%%    the `draft' option.
+%%  - The default global line spacing can be changed with one of the
+%%    options `singlespaced', `onehalfspaced', or `doublespaced'.
+%%  - Footnotes and marginal notes are all single-spaced by default, but
+%%    can be made to have the same spacing as the rest of the document
+%%    by using the option `standardspacednotes'.
+%%  - The size of the margins can be changed with one of the options:
+%%     . `narrowmargins' (1 1/4" left, 3/4" others),
+%%     . `normalmargins' (1 1/4" left, 1" others),
+%%     . `widemargins' (1 1/4" all),
+%%     . `extrawidemargins' (1 1/2" all).
+%%  - The pagestyle of "cleared" pages (empty pages inserted in
+%%    two-sided documents to put the next page on the right-hand side)
+%%    can be set with one of the options `cleardoublepagestyleempty',
+%%    `cleardoublepagestyleplain', or `cleardoublepagestylestandard'.
+%%  - Any other standard option for the `report' document class can be
+%%    used to override the default or draft settings (such as `10pt',
+%%    `11pt', `12pt'), and standard LaTeX packages can be used to
+%%    further customize the layout and/or formatting of the document.
+
+%% *** Add any desired options. ***
+\documentclass[11pt]{ut-thesis}
+\linespread{1.5}
+\usepackage{amsmath, cases}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{hyperref}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true
+  tabsize=3
+}
+
+%% *** Add \usepackage declarations here. ***
+%% The standard packages `geometry' and `setspace' are already loaded by
+%% `ut-thesis' -- see their documentation for details of the features
+%% they provide.  In particular, you may use the \geometry command here
+%% to adjust the margins if none of the ut-thesis options are suitable
+%% (see the `geometry' package for details).  You may also use the
+%% \setstretch command to set the line spacing to a value other than
+%% single, one-and-a-half, or double spaced (see the `setspace' package
+%% for details).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                    %%
+%%                   ***   I M P O R T A N T   ***                    %%
+%%                                                                    %%
+%%  Fill in the following fields with the required information:       %%
+%%   - \degree{...}       name of the degree obtained                 %%
+%%   - \department{...}   name of the graduate department             %%
+%%   - \gradyear{...}     year of graduation                          %%
+%%   - \author{...}       name of the author                          %%
+%%   - \title{...}        title of the thesis                         %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% *** Change this example to appropriate values. ***
+\def \sch {Schr\"{o}dinger }
+\degree{Masters of Science}
+\department{Physics}
+\gradyear{2014}
+\author{Feras Aldahlawi}
+\title{\LARGE{A two-dimensional Self-Consistent Solution to \sch-Poisson Equation Using Finite Element Method with dolfin-python}}
+
+
+%% *** NOTE ***
+%% Put here all other formatting commands that belong in the preamble.
+%% In particular, you should put all of your \newcommand's,
+%% \newenvironment's, \newtheorem's, etc. (in other words, all the
+%% global definitions that you will need throughout your thesis) in a
+%% separate file and use "\input{filename}" to input it here.
+
+
+%% *** Adjust the following settings as desired. ***
+
+%% List only down to subsections in the table of contents;
+%% 0=chapter, 1=section, 2=subsection, 3=subsubsection, etc.
+\setcounter{tocdepth}{2}
+
+%% Make each page fill up the entire page.
+\flushbottom
+
+
+%%%%%%%%%%%%      MAIN  DOCUMENT      %%%%%%%%%%%%
+
+\begin{document}
+
+%% This sets the page style and numbering for preliminary sections.
+\begin{preliminary}
+
+%% This generates the title page from the information given above.
+\maketitle
+
+%% There should be NOTHING between the title page and abstract.
+%% However, if your document is two-sided and you want the abstract
+%% _not_ to appear on the back of the title page, then uncomment the
+%% following line.
+%\cleardoublepage
+
+%% This generates the abstract page, with the line spacing adjusted
+%% according to SGS guidelines.
+
+%% Anything placed between the abstract and table of contents will
+%% appear on a separate page since the abstract ends with \newpage and
+%% the table of contents starts with \clearpage.  Use \cleardoublepage
+%% for anything that you want to appear on a right-hand page.
+
+%% This generates a "dedication" section, if needed
+%% (uncomment to have it appear in the document).
+%\begin{dedication}
+%% *** Put your Dedication here. ***
+%\end{dedication}
+
+%% The `dedication' and `acknowledgements' sections do not create new
+%% pages so if you want the two sections to appear on separate pages,
+%% you should put an explicit \newpage between them.
+
+%% This generates an "acknowledgements" section, if needed
+%% (uncomment to have it appear in the document).
+%\begin{acknowledgements}
+%% *** Put your Acknowledgements here. ***
+%\end{acknowledgements}
+
+%% This generates the Table of Contents (on a separate page).
+\tableofcontents
+
+%% This generates the List of Tables (on a separate page), if needed
+%% (uncomment to have it appear in the document).
+%\listoftables
+
+%% This generates the List of Figures (on a separate page), if needed
+%% (uncomment to have it appear in the document).
+%\listoffigures
+
+%% You can add commands here to generate any other material that belongs
+%% in the head matter (for example, List of Plates, Index of Symbols, or
+%% List of Appendices).
+
+%% End of the preliminary sections: reset page style and numbering.
+\end{preliminary}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Put your Chapters here; the easiest way to do this is to keep     %%
+%%  each chapter in a separate file and `\include' all the files.     %%
+%%  Each chapter file should start with "\chapter{ChapterName}".      %%
+%%  Note that using `\include' instead of `\input' will make each     %%
+%%  chapter start on a new page, and allow you to format only parts   %%
+%%  of your thesis at a time by using `\includeonly'.                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% *** Include chapter files here. ***
+\chapter{User Manual}
+This paper is aimed to be a supplement to my masters thesis. One can find the thesis and the program by emailing me at \textcolor{blue}{\href{mailto:feras@uchicago.edu}{feras@uchicago.edu}}.
+We will assume that the reader is familiar with python. A basic tutorial for Fenics is available through their website. I will try to be as thorough as possible, but I highly recommend reading the
+tutorial before proceeding. Fenics package is extremely useful in solving partial differential equations with obscure geometries while minimizing the required work for setting the geometry
+up. The program we will describe here is designed to solve \sch and Poisson equation self-consistently.
+
+The program is divided into five files, main, meshCreator, electronDensity, poisson, and schrodinger. We will explain the functionality of each file in the following sections.
+To check if all the packages are installed correctly, unzip the program and type in the following command from a unix terminal window:
+\begin{lstlisting}
+python main.py 0.0
+\end{lstlisting}
+
+Where the number after main.py signifies Fermi level. Running this should reproduce our result from the thesis.
+
+
+\section{Main}
+
+In main, we have to include the following files:
+
+\begin{lstlisting}
+from dolfin import *
+from meshCreator import *
+from schrodinger import schrodingerEq
+from poisson import poissonEq
+from electronDensity import electronOccupationState, electronDensityFunction
+from scipy import constants as pc
+import numpy as np
+import matplotlib.pyplot as plt 
+import time
+import sys
+\end{lstlisting}
+
+{\it{dolfin}} is important so that we can use FEM in python, {\it{meshCreator}} file defines our function space, {\it{schrodinger}} takes care of the \sch FEM formulation and solution.
+{\it{poisson}} is to solve Poisson in FEM formulation. {\it{electronDensity}} is to find the electron density. {\it{scipy}} and {\it{numpy}} are for defining physical constants and efficient arrays.
+{\it{matplotlib}} is used for plotting. {\it{time}} and {\it{sys}} are used for timing and writing the solution to a file.
+
+Next, we proceed with our main loop. We start our loop by calling each file as follows
+
+\begin{lstlisting}
+#Start of Iteration
+k = 0
+while k < 10:
+  print str(k+1) + ' iteration'
+  
+  #get the eigenvalues and eigenfunctions
+  eigenvalues, eigenvectors, u, rx_list = schrodingerEq(potential, meshArray, fermiEnergy)
+  
+  #find the electron density
+  nk = electronOccupationState(eigenvalues, fermiEnergy)
+  new_n = electronDensityFunction(eigenvectors, nk)
+  
+  #solve the poisson equation
+  phi = poissonEq(new_n,meshArray)
+\end{lstlisting}
+
+
+
+\section{Creating a Mesh}
+\section{Schrodinger}
+\section{Electron Density}
+
+
+
+%% *** NOTE ***
+%% If you don't use bibliography files, comment out the previous line
+%% and use \begin{thebibliography}...\end{thebibliography}.  (In that
+%% case, you should probably put the bibliography in a separate file and
+%% `\include' or `\input' it here).
+
+\end{document}

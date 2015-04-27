@@ -1,0 +1,491 @@
+%% ut-thesis.tex -- document template for graduate theses at UofT
+%%
+%% Copyright (c) 1998-2012 Francois Pitt <fpitt@cs.utoronto.ca>
+%% last updated at 09:43 (EDT) on Fri  1 Jun 2012
+%%
+%% This work may be distributed and/or modified under the conditions of
+%% the LaTeX Project Public License, either version 1.3c of this license
+%% or (at your option) any later version.
+%% The latest version of this license is in
+%%     http://www.latex-project.org/lppl.txt
+%% and version 1.3c or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status "maintained".
+%%
+%% The Current Maintainer of this work is
+%% Francois Pitt <fpitt@cs.utoronto.ca>.
+%%
+%% This work consists of the files listed in the accompanying README.
+
+%% SUMMARY OF FEATURES:
+%%
+%% All environments, commands, and options provided by the `ut-thesis'
+%% class will be described below, at the point where they should appear
+%% in the document.  See the file `ut-thesis.cls' for more details.
+%%
+%% To explicitly set the pagestyle of any blank page inserted with
+%% \cleardoublepage, use one of \clearemptydoublepage,
+%% \clearplaindoublepage, \clearthesisdoublepage, or
+%% \clearstandarddoublepage (to use the style currently in effect).
+%%
+%% For single-spaced quotes or quotations, use the `longquote' and
+%% `longquotation' environments.
+
+
+%%%%%%%%%%%%         PREAMBLE         %%%%%%%%%%%%
+
+%%  - Default settings format a final copy (single-sided, normal
+%%    margins, one-and-a-half-spaced with single-spaced notes).
+%%  - For a rough copy (double-sided, normal margins, double-spaced,
+%%    with the word "DRAFT" printed at each corner of every page), use
+%%    the `draft' option.
+%%  - The default global line spacing can be changed with one of the
+%%    options `singlespaced', `onehalfspaced', or `doublespaced'.
+%%  - Footnotes and marginal notes are all single-spaced by default, but
+%%    can be made to have the same spacing as the rest of the document
+%%    by using the option `standardspacednotes'.
+%%  - The size of the margins can be changed with one of the options:
+%%     . `narrowmargins' (1 1/4" left, 3/4" others),
+%%     . `normalmargins' (1 1/4" left, 1" others),
+%%     . `widemargins' (1 1/4" all),
+%%     . `extrawidemargins' (1 1/2" all).
+%%  - The pagestyle of "cleared" pages (empty pages inserted in
+%%    two-sided documents to put the next page on the right-hand side)
+%%    can be set with one of the options `cleardoublepagestyleempty',
+%%    `cleardoublepagestyleplain', or `cleardoublepagestylestandard'.
+%%  - Any other standard option for the `report' document class can be
+%%    used to override the default or draft settings (such as `10pt',
+%%    `11pt', `12pt'), and standard LaTeX packages can be used to
+%%    further customize the layout and/or formatting of the document.
+
+%% *** Add any desired options. ***
+\documentclass[12pt]{ut-thesis}
+\linespread{2.0}
+\usepackage{amsmath, cases}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+
+%% *** Add \usepackage declarations here. ***
+%% The standard packages `geometry' and `setspace' are already loaded by
+%% `ut-thesis' -- see their documentation for details of the features
+%% they provide.  In particular, you may use the \geometry command here
+%% to adjust the margins if none of the ut-thesis options are suitable
+%% (see the `geometry' package for details).  You may also use the
+%% \setstretch command to set the line spacing to a value other than
+%% single, one-and-a-half, or double spaced (see the `setspace' package
+%% for details).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                    %%
+%%                   ***   I M P O R T A N T   ***                    %%
+%%                                                                    %%
+%%  Fill in the following fields with the required information:       %%
+%%   - \degree{...}       name of the degree obtained                 %%
+%%   - \department{...}   name of the graduate department             %%
+%%   - \gradyear{...}     year of graduation                          %%
+%%   - \author{...}       name of the author                          %%
+%%   - \title{...}        title of the thesis                         %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% *** Change this example to appropriate values. ***
+\def \sch {Schr\"{o}dinger }
+\degree{Masters of Science}
+\department{Physics}
+\gradyear{2014}
+\author{Feras Aldahlawi}
+\title{\LARGE{A two-dimensional Self-Consistent Solution to \sch-Poisson Equation Using Finite Element Method}}
+
+
+%% *** NOTE ***
+%% Put here all other formatting commands that belong in the preamble.
+%% In particular, you should put all of your \newcommand's,
+%% \newenvironment's, \newtheorem's, etc. (in other words, all the
+%% global definitions that you will need throughout your thesis) in a
+%% separate file and use "\input{filename}" to input it here.
+
+
+%% *** Adjust the following settings as desired. ***
+
+%% List only down to subsections in the table of contents;
+%% 0=chapter, 1=section, 2=subsection, 3=subsubsection, etc.
+\setcounter{tocdepth}{2}
+
+%% Make each page fill up the entire page.
+\flushbottom
+
+
+%%%%%%%%%%%%      MAIN  DOCUMENT      %%%%%%%%%%%%
+
+\begin{document}
+
+%% This sets the page style and numbering for preliminary sections.
+\begin{preliminary}
+
+%% This generates the title page from the information given above.
+\maketitle
+
+%% There should be NOTHING between the title page and abstract.
+%% However, if your document is two-sided and you want the abstract
+%% _not_ to appear on the back of the title page, then uncomment the
+%% following line.
+%\cleardoublepage
+
+%% This generates the abstract page, with the line spacing adjusted
+%% according to SGS guidelines.
+\begin{abstract}
+%% *** Put your Abstract here. ***
+%% (At most 150 words for M.Sc. or 350 words for Ph.D.)
+\hspace{5ex}In this paper, we show a method of solving the \sch equation and Poisson equation self-consistently using the Finite
+Element Method. We ran a simulation for a wafer of GaAs/AlGaA heterojunction with GaAs doping of $2 \times 10^{18} /cm^3$ quantum wafer.
+We achieve convergence for Fermi level range between $E_f = (1000.0, 2000.0)$ MeV.
+\end{abstract}
+
+%% Anything placed between the abstract and table of contents will
+%% appear on a separate page since the abstract ends with \newpage and
+%% the table of contents starts with \clearpage.  Use \cleardoublepage
+%% for anything that you want to appear on a right-hand page.
+
+%% This generates a "dedication" section, if needed
+%% (uncomment to have it appear in the document).
+%\begin{dedication}
+%% *** Put your Dedication here. ***
+%\end{dedication}
+
+%% The `dedication' and `acknowledgements' sections do not create new
+%% pages so if you want the two sections to appear on separate pages,
+%% you should put an explicit \newpage between them.
+
+%% This generates an "acknowledgements" section, if needed
+%% (uncomment to have it appear in the document).
+%\begin{acknowledgements}
+%% *** Put your Acknowledgements here. ***
+%\end{acknowledgements}
+
+%% This generates the Table of Contents (on a separate page).
+\tableofcontents
+
+%% This generates the List of Tables (on a separate page), if needed
+%% (uncomment to have it appear in the document).
+%\listoftables
+
+%% This generates the List of Figures (on a separate page), if needed
+%% (uncomment to have it appear in the document).
+%\listoffigures
+
+%% You can add commands here to generate any other material that belongs
+%% in the head matter (for example, List of Plates, Index of Symbols, or
+%% List of Appendices).
+
+%% End of the preliminary sections: reset page style and numbering.
+\end{preliminary}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Put your Chapters here; the easiest way to do this is to keep     %%
+%%  each chapter in a separate file and `\include' all the files.     %%
+%%  Each chapter file should start with "\chapter{ChapterName}".      %%
+%%  Note that using `\include' instead of `\input' will make each     %%
+%%  chapter start on a new page, and allow you to format only parts   %%
+%%  of your thesis at a time by using `\includeonly'.                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% *** Include chapter files here. ***
+\chapter{Introduction}
+\hspace{5ex} Modern day electronics have reached scales of extremely small magnitudes, typically, a few hundred nanometers. When we enter this regime, it is important
+to take into account quantum mechanical phenomenons as they have a larger impact on smaller scale electronics. These quantum effects will impose
+substantial amount of change on device performance. One way to understand the behavior of materials at such scales is to incorporate quantum mechanics along
+with semi-classical electrostatics. A complete picture requires a self-consistent solution of both \sch and Poisson equation. These types of systems are
+extremely complex to be solved analytically. Therefore, we resort to numerical approximations. Ideally, one would device a numerical simulation flexible enough to capture
+wide range of applicability, while at the same time accurate to experimental data. 
+A lot of literature have utilized a conventional approach to the solution of \sch and Poisson equation called finite-difference method (FDM). In this paper, we
+use another method in finding a self-consistent solution called finite-element method (FEM). The reason why we decided to use FEM is that
+it is easy to have complex geometries, such as combinations of cylinders, spheres, and cubes. In chapter 1 we will discuss the formulation of \sch and Poisson
+equations in the FEM regime. In chapter 2, we will discuss the theory behind our numerical simulation. Lastly, in chapter 3, we
+will discuss the results for a simple two-dimensional heterojunction.
+
+\chapter{Formulation}
+
+\section{Finite Element Method}
+\hspace{5ex} More often than not, we need to numerically solve partial differential equations. In this paper, we will use the finite Element
+method to study the \sch and Poisson equations. This method is powerful because allows us to solve PDEs for obscure geometries.
+ For generic formulation for a PDE of the form
+\begin{equation}
+ [D] u(x) = f(x) \in \Omega
+\end{equation}
+ Where D is an arbitrary operator, and $\Omega$ defines our geometry. We have to rewrite this equation in weak variational form so that we can solve it using FEM. Let us consider the
+ boundary conditions
+
+ \begin{numcases}{}
+  u(x) = u_0(x) & \text{on $\Gamma_D$} \\
+  \frac{\partial u}{\partial n} = g_0(x) & \text{on $\Gamma_N$}
+\end{numcases}
+
+Where $\Gamma_D$ and $\Gamma_N$ signifies Dirichlet and Neumann boundary condition. The general idea of finite element method is to
+rewrite a PDE into a variational problem. The way to do that is to introduce an arbitrary function $v$ and multiply the PDE with $v$. 
+Then we integrate over the domain $\Omega$ and separate every second-order derivative using integration by parts. The original PDE then can be written
+in the weak form as
+
+\begin{equation}
+ \int_\Omega [D']( u \cdot v)\; d\Omega + \int_{\Gamma_N} g v \; \partial \Omega = \int_\Omega f v \; d\Omega \;\;\; \forall v \in \hat V
+\end{equation}
+
+Where $D'$ is the reduced operator after performing integration by part to the second-order derivatives, and $\hat V$ is
+the function space where our arbitrary function $v$ lives. The function $u$ lies in $V$, which could be different than $\hat V$.
+Now, to perform the calculation numerically, we need to reformulate the continuous variational problem to a discrete problem.
+ We just need to define a discrete space $\hat V_d \subset \hat V$ and $V_d \subset V$ so that we can write our boundary problem as
+ 
+ \begin{equation}
+  \int_\Omega [D']( u_d \cdot v)\; d\Omega + \int_{\Gamma_N} g v \; \partial \Omega = \int_\Omega f v \; d\Omega \;\;\; \forall v \in \hat V_d \subset \hat V
+ \end{equation}
+
+ It convenient to use unified notation for linear weak forms
+ 
+ \begin{equation}
+  a(u, v) = L(v)
+ \end{equation}
+ 
+ with
+ 
+  \begin{equation}
+  a(u, v) = \int_\Omega [D']( u_d \cdot v)\; d\Omega
+ \end{equation}
+ 
+  \begin{equation}
+  L(v) = \int_\Omega f v \; d\Omega - \int_{\Gamma_N} g v \; \partial \Omega
+ \end{equation}
+ 
+\section{Poisson in weak variational form}
+ \hspace{5ex} Here, we want to solve Poisson equation that arises in electrostatics. The general Poisson equation for electrostatics is giving by
+ \begin{equation}
+  \frac{d}{dx}\big(\epsilon_s(x)\frac{d}{dx}\big)\phi(x) = \frac{-q[N_D(x) - n(x)]}{\epsilon_0}
+ \end{equation}
+ 
+ Where $\epsilon_s$ is the dielectric constant of the material, $N_D$ is the ionized donor concentration, $\phi$ is our
+ electrostatic potential, and $n$ is the electron density. Here, we will only consider a piecewise dielectric constant, therefore, we only
+ need to divide the domain into subdomain with different dielectric constants. The Poisson equation can be rewritten as
+ \begin{equation}
+  \epsilon_s\nabla^2\phi(x) = \frac{-q[N_D(x) - n(x)]}{\epsilon_0}
+ \end{equation}
+ 
+ Notice that our operator $[D]$ is replace with $\nabla^2$, and our source term $f(x)$ is replaced with the scaled
+ difference of the ionized donor concentration and the electron density. It is pretty straight forward to reformulate 
+ the Poisson equation to the weak variational form, all we need to do is to follow the procedure explained in the previous
+ section. We get our final weak variational as
+ 
+ \begin{equation}
+  \int_\Omega \epsilon_s \epsilon_0 \nabla \phi \cdot \nabla v \;\; d\Omega = \int_\Omega \-q[N_D(x) - n(x)]v(x) \;\; d\Omega
+ \end{equation}
+
+ Now can use finite element method to solve for $\phi(x)$.
+ 
+\section{\sch in weak variational form}
+ \hspace{5ex} To rewrite Schrödinger's equation in the variational form, we start with \sch's equation in differential form
+ 
+ \begin{equation}
+  -\frac{\hbar^2}{2}\frac{d}{dx}\big(\frac{1}{m^*(x)}\frac{d}{dx}\big)\psi(x) + V(x) \psi(x) = E\psi(x)  
+ \end{equation}
+Where $m*(x)$ is the effective mass. Since we are going to have a constant mass within the region we are exploring, we can
+take that out of the derivative. With a little algebra we can rewrite the equation as
+
+\begin{equation}		
+ \frac{\hbar^2}{2 m^*}\nabla^2\psi(x) + [E - V(x)] \psi(x) = 0
+\end{equation}
+
+Multiply both sides by a test function $v$. This function is arbitrary with the condition that it vanishes on the boundaries
+of our system.
+
+\begin{equation}		
+ \frac{\hbar^2}{2 m^*}\nabla^2\psi(x) v(x) + [E - V(x)] \psi(x) v(x) = 0
+\end{equation}
+
+Integrate both terms over the domain and using integration by parts yields
+
+\begin{equation} 
+ \int_\Omega \frac{\hbar^2}{2 m^*}\frac{\partial \psi}{\partial x} \frac{\partial v}{\partial x} d\Omega + \int_\Omega V(x) \psi(x) v(x) d\Omega = \int_\Omega E \psi(x) v(x) d\Omega
+\end{equation}
+
+Notice that we drop the surface term because we require that our test function $v$ vanishes where $\psi$ is known.
+
+\chapter{Numerical Simulation}
+
+\section{Relevant Equations}
+\hspace{5ex} In this section, we will cover the basic equations that we need to satisfy in our numerical simulation. The basic equations
+combines quantum mechanics with semi-classical physics. We need to solve \sch and Poisson using
+
+\begin{equation}\label{eq:sch}
+  -\frac{\hbar^2}{2}\frac{d}{dx}\big(\frac{1}{m^*(x)}\frac{d}{dx}\big)\psi(x) + V(x) \psi(x) = E\psi(x)
+\end{equation}
+
+\begin{equation}\label{eq:phi}
+    \frac{d}{dx}\big(\epsilon_s(x)\frac{d}{dx}\big)\phi(x) = \frac{-q[N_D(x) - n(x)]}{\epsilon_0}
+\end{equation}
+
+\begin{equation}\label{eq:v}
+    V(x) = -q \phi (x) + \Delta E_c (x)
+\end{equation}
+
+\begin{equation}\label{eq:nx}
+   n(x) = \sum^m_{k=1}\psi^*_k(x)\psi_k(x)n_k
+\end{equation}
+
+\begin{equation}\label{eq:nk}
+   n_k = \frac{m^*}{\pi  \hbar^2} \int^{\infty}_{E_k} \frac{1}{1+e^{(E-E_F)/KT}}dE
+\end{equation}
+
+Where $\Delta E_c (x)$ is the pseudopotential energy due to the band offset at the heterointerface, $n_k$ is the electron occupation
+number which can calculated by Fermi-Dirac distribution function with $E_F$ being the Fermi level, $\psi_k$ is the wavefunction in the $k^{th}$ state,
+ and $E_k$ is the eigen energy in state $k$. These five equations have to be solved and produce a self-consistent solution
+ in order for us to have a good approximation of the behavior of our system.
+ 
+ \section{Approximations}
+ \hspace{5ex} In this section, we will cover the basic approximations that we employ in our numerical simulation. We first start with approximating the occupation number $n_k$.
+ since the complete Fermi-Dirac integral is an exponential function
+ \begin{equation}
+  \mathcal{F}_j(x) = \frac{1}{\Gamma (j+1)} \int^\infty_0 \frac{t^j}{exp(t-x)+1}dt
+ \end{equation}
+ 
+ Where $x = E - E_F$. In this paper, we will only consider the two dimensional case, in which $j = -1/2$.
+ Since we are taking the integral of $\mathcal{F}_j(x)$ from $E_k$ to $\infty$, we need the argument $E$ to be $E \le 0$. Therefore the distribution function falls
+ of exponentially as
+ \begin{equation}
+  \mathcal{F}_{-1/2}(E) \sim exp(-E), \;\;\;\; E \gg 0
+ \end{equation}
+
+ Therefore, we only need to calculates relatively few quantum states the are lower than Fermi level. The second approximation involves treating $m^*(x)$ as a step function.
+ Where it is (for two subdomains) 
+ 
+ \begin{numcases}{m^*(x) = }{}
+  a_1 m_e & \text{$\in \;\;\Omega_1$} \\
+  a_2 m_e & \text{otherwise}
+\end{numcases}
+Where $m_e$ is the mass of electron ($\approx 0.511$ MeV), and $a_1$ and $a_2$ are coefficients that depends on the materials.
+
+\section{Algorithm}
+\hspace{5ex} In this section, we will describe the process of producing a self-consistent solution. We first start with an arbitrary potential $V(x)$ and 
+plug it in equation ~\ref{eq:sch} to solve for the wavefunctions. After we get the wavefunctions, we compute the electron density function
+and the occupation number using equations ~\ref{eq:nx} and ~\ref{eq:nk}. Then we can solve Poisson equation because we have $n(x)$. Finally, we use
+the solution of ~\ref{eq:phi}, $\phi(x)$, to find the new corrected potential, $V(x)$, using ~\ref{eq:v}. After finding the new potential and the new electron
+density, we compute the difference between them and their old values to test for convergence. We repeat this process until we achieve convergence, we choose our criteria for convergence to be on the order of $10^{-5}$ error.
+
+\begin{figure}[th]
+  \centering
+    \includegraphics[width=.6\textwidth]{algorithm}
+      \caption{A flowchart of the self-consistent simulation}
+\end{figure}
+
+\section{Geometry}
+\hspace{5ex} We will consider a GaAs/AlGaAs structure for our simulation. We chose GaAs/AlGaAs because it preforms better than most of semiconductors 
+at high frequency. Also, GaAs/AlGaAs is pretty much insensitive to temperature. Lastly, GaAs/AlGaAs has a high electron mobility. Ideally,
+our simulation would work for all sorts of materials but we will only show GaAs/AlGaAs in this paper. Our wafer is depicted in Figure ~\ref{fig:domain}. Our wafer's boundary conditions at $\phi(0,y) = 0$
+and $\phi(1,y) = 0$ at both ends on the $x$-axis, and is periodic, $\phi(x,0) = \phi(x,1)$ on the $y$-axis. Notice that we use normalized coordinate system in which our domain
+is $\Omega \in [0,1] \times [0,1]$. The last two boundary conditions take care of the fact that we dope the GaAs layer with $2\times10^{18}$ electrons/$cm^3$.
+
+\begin{figure}[th]\label{fig:domain}
+  \centering
+    \includegraphics[width=.6\textwidth]{wafer}
+      \caption{Structure of the wafer that we used for our simulation. Here, we use alloy fraction of $\text{GaAs}/\text{Al}_{0.3}\text{Ga}_{0.7}\text{As}$}
+\end{figure}
+
+\chapter{Results}
+\hspace{5ex} In this section, we will device our efforts to find the right Fermi level that will have a convergent solution while preserving
+the properties of the system. We start with Fermi Level of the order $\sim O(10^5)$. From figure ~\ref{fig:fermi5c}, we can
+see that Fermi levels of the order $\sim O(10^5)$ are not good candidates for our wafer because they do not reach our
+$10^{-5}$ error requirement. We next try Fermi levels of the order $\sim O(10^4)$
+
+\begin{figure}[th]\label{fig:fermi5c}
+  \centering
+    \includegraphics[width=.6\textwidth]{fermi5c}
+      \caption{shown above is the time it took the simulation to run (in minutes), the error in electron density, and the error in potential plotted against different values of Fermi level on the order of $10^5$}
+\end{figure}
+
+
+For Fermi levels of the order $\sim O(10^4)$, we get some convergent solutions. Namely, for the Fermi levels $ Ef = 1000.0$, $1500.0$, and $2000.0$ all in 4 iterations.
+
+\begin{figure}[th]\label{fig:fermi4c}
+  \centering
+    \includegraphics[width=.6\textwidth]{fermi4c}
+      \caption{shown above is the time it took the simulation to run (in hours), the error in electron density, and the error in potential plotted against different values of Fermi level on the order of $10^4$. The values $E_f \b 2000.0$ did not converge}
+\end{figure}
+
+Next, we Plot the electron density and potential for a Fermi energy in the convergent range.
+
+\begin{figure}[th]
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=1\linewidth]{n}
+  \caption{Electron Density ($10^{11}/cm^3$}
+  \label{fig:n}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=1\linewidth]{potential}
+  \caption{Potential (MeV)}
+  \label{fig:potential}
+\end{subfigure}
+\caption{Convergent solution for electron density n(x,y) and potential V(x,y)}
+\label{fig:v}
+\end{figure}
+
+
+\begin{figure}[th]
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=1\linewidth]{wf1}
+  \caption{wavefunction k = 1}
+  \label{fig:wf1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=1\linewidth]{wf2}
+  \caption{wavefunction k=2}
+  \label{fig:wf2}
+\end{subfigure}
+\caption{First two eigenfuctions of $\psi(x,y)$}
+\label{fig:v}
+\end{figure}
+
+\section*{Conclusion}
+\hspace{5ex} As electronic chips becomes smaller, more work required to determine their electronic properties. When devices reaches the nanometer range, quantum
+effects become non-negligible. A self-consistent solution to the \sch and Poisson equation is necessary to get accurate predictions of the system properties. 
+Due to the complexity of the system, only numerical simulation are possible. We use FEM to simulate a self-consistent solution
+for a GaAs/AlGaAs quantum wafer. We achieve convergence for values of Fermi level ranging from $1000.0 MeV$ to $2000.0 MeV$
+
+\section*{Acknowledgements}
+\hspace{5ex}I would like to thank Prof. Woowon Kang for his immense patience and allocating some of his precious time to sponsor and review this thesis. I would also like to thank
+the Saudi Arabian Cultural Mission (SACM) for sponsoring this research.
+
+%% This adds a line for the Bibliography in the Table of Contents.
+\addcontentsline{toc}{section}{Bibliography}
+%% *** Set the bibliography style. ***
+%% (change according to your preference/requirements)
+\bibliographystyle{plain}
+%% *** Set the bibliography file. ***
+%% ("thesis.bib" by default; change as needed)
+%%\bibliography{thesis}
+
+\begin{thebibliography}{widest entry}
+ \bibitem[1]{tan} Tan, I‐H., G. L. Snider, L. D. Chang, and E. L. Hu. "A self-consistent solution of Schr\"{o}dinger-Poisson equations using a nonuniform mesh." Journal of applied physics 68, no. 8 (1990): 4071-4076.
+ \bibitem[2]{trellakis} Trellakis, Alex, Till Andlauer, and Peter Vogl. "Efficient solution of the schr\"{o}dinger-poisson equations in semiconductor device simulations." In Large-Scale Scientific Computing, pp. 602-609. Springer Berlin Heidelberg, 2006.
+ \bibitem[3]{serra} Serra, AM Cruz, and H. Abreu Santos. "A one‐dimensional, self-consistent numerical solution of Schr\"{o}dinger and Poisson equations." Journal of applied physics 70, no. 5 (1991): 2734-2738.
+ \bibitem[4]{huang} Huang, Chung-Kuang, and Neil Goldsman. "2-D self-consistent solution of Schr\"{o}dinger equation, Boltzmann transport equation, Poisson and current-continuity equation for MOSFET." SISPAD 2001 (2001): 148-51.
+ \bibitem[5]{ruic} Ruic, Dino, and Christoph Jungemann. "A self-consistent solution of the Poisson, Schrodinger and Boltzmann equations by a full Newton-Raphson approach for nanoscale semiconductor devices."
+ bibitem[6]{kittle} Kittel, Charles, and Paul McEuen. Introduction to solid state physics. Vol. 8. New York: Wiley, 1986.
+ bibitem[7]{simon} Simon, Steven H.. The Oxford solid state basics. Oxford: Oxford University Press, 2013.
+ 
+ 
+ 
+\end{thebibliography}
+
+
+%% *** NOTE ***
+%% If you don't use bibliography files, comment out the previous line
+%% and use \begin{thebibliography}...\end{thebibliography}.  (In that
+%% case, you should probably put the bibliography in a separate file and
+%% `\include' or `\input' it here).
+
+\end{document}
